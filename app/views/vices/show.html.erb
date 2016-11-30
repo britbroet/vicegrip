@@ -19,8 +19,10 @@
   <span class="yellowBackground"><%= @vice.goal_name  %></span></h2>
   <hr>
 
+
   <h2>Setbacks:</h2>
     <% if @vice.setbacks.length > 0 %>
+      <h2>Days since last setback: <%= (((Time.now).to_i) - (@vice.setbacks.maximum(:setback_date)).to_i) / 1.day %></h2>
       <% (0...@vice.setbacks.length).each do |s| %>
         <div>
         Setback date: <%= @vice.setbacks[s].setback_date %> |
